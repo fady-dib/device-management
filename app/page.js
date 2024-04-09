@@ -1,8 +1,30 @@
-import Image from "next/image";
-import supabase from './config/supabase'
+import AddDevice from './components/AddDevice';
+import Filter from './components/Filter';
+import supabase from './config/supabase';
 
-export default function Home() {
+
+
+async function getData() {
+  'use server'
+  const { data, error } = await supabase.from('devices').select();
+
+  if (error) {
+    throw new Error('Failed to fetch data');
+  }
+
+  return data;
+
+}
+
+export default async function Home() {
+
+  const data = await getData()
+
   return (
- <main></main>
+    <main>
+     <Filter initialData={data}></Filter>
+      <AddDevice></AddDevice>
+
+    </main>
   );
 }
