@@ -19,14 +19,11 @@ const Filter = ({ initialData = [] }) => {
     return (
         <div>
             <div className="my-4">
-                <label htmlFor="brand-filter" className=" pr-4 font-medium text-indigo-500">
-                    Filter by Brand:
-                </label>
                 <select
                     id="brand-filter"
                     value={filter}
                     onChange={(e) => setFilter(e.target.value)}
-                    className="mt-1 px-3 py-2 border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md shadow-sm"
+                    className="mt-1 px-3 py-2 border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-indigo-600 sm:text-sm rounded-md shadow-sm"
                 >
                     <option value="">All Brands</option>
                     {[...new Set(initialData.map(item => item.brand))].map(brand => (
